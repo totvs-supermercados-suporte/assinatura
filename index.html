@@ -28,9 +28,10 @@ body {
 }
 
 .container {
-    display:flex;
-    margin-top: 20px;
+  display: flex;
+  margin-top: 20px;
 }
+
 
 .form-container {
     flex: 1; 
@@ -49,8 +50,8 @@ body {
 
 img {
   width: 100%;
-  max-width: 750px;
-  height: auto;
+  max-width: 600px;
+  height: 500px;
   border-radius: 30px 0px 0px 30px;
   object-fit: cover;
   box-shadow: 0px 0px 10px rgba(216, 79, 247, 0.404)
@@ -61,7 +62,7 @@ img {
 }
 
 .palavrastitulo {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 input[type="checkbox"] {
@@ -71,7 +72,7 @@ input[type="checkbox"] {
   input[type="checkbox"] + label {
     position: relative;
     padding: 10px;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -102,7 +103,7 @@ input[type="checkbox"] {
 textarea,
 select {
     font-size: 15px;
-    width: 50%;
+    width: 100%;
     margin: 10px auto;
     background-color: transparent;
     color: #333;
@@ -120,12 +121,12 @@ select {
     margin: 0 auto;
     resize: none;
     border-radius:5px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 ::placeholder {
   color: #a5a4a4; 
-  font-size: 12px; 
+  font-size: 13px; 
   font-style: italic;
 }
 
@@ -356,6 +357,15 @@ label[for="campoAdicional"] {
     display: none;
 }
 
+#campoOutro {
+  width: 500px;
+  line-height: 10px;
+}
+
+.palavrastitulo-time-label {
+  margin-bottom: 15px;
+}
+
 
   </style>
    
@@ -374,7 +384,7 @@ label[for="campoAdicional"] {
             <option value="Hebert Pedersoli">Hebert Pedersoli</option>
             <option value="Larissa Curbage">Larissa Curbage</option>
             <option value="Paulo Basile">Paulo Basile</option>
-            <option value="OUTRO" class="palavrastitulo" style="color: rgb(37, 17, 221); font-size: 12px;font-weight: bold;">Não tenho líder/Sou de outro setor</option>
+            <option value="OUTRO" class="palavrastitulo" style="color: rgb(37, 17, 221); font-size: 14px;font-weight: bold;">Não tenho líder/Sou de outro setor</option>
 </select>
 
 <div id="campoOutro" style="display: none;">
@@ -386,7 +396,7 @@ label[for="campoAdicional"] {
 </div>
 
     <br>
-    <label for="campoAdicional" class="palavrastitulo"><i class='bx bx-map-alt' style='color:#660e87' id="setor" ></i> Você é de que time?</label><br><br>
+    <label for="campoAdicional" class="palavrastitulo-time-label"><i class='bx bx-map-alt' style='color:#660e87' id="setor" ></i> Você é de que time?</label><br><br>
     <div style="display: flex; flex-wrap: wrap;">
       <div>
           <input type="checkbox" id="checkbox-edocs" onchange="preencherAreaLinha(this)">
@@ -513,16 +523,16 @@ label[for="campoAdicional"] {
     
         if (cargo === "Rolf Guenze") {
             leaderInfo =
-                'Líder [Rolf Guenze](rolf.guenze@totvs.com.br) - [(16) 9 92975421![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992975421)';
+                'Líder: [Rolf Guenze](rolf.guenze@totvs.com.br) - [(16) 9 92975421![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992975421)';
         } else if (cargo === "Hebert Pedersoli") {
             leaderInfo =
-                'Líder [Hebert Pedersoli](hebert.pedersoli@totvs.com.br) - [(16) 9 9401-2783![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516994012783)';
+                'Líder: [Hebert Pedersoli](hebert.pedersoli@totvs.com.br) - [(16) 9 9401-2783![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516994012783)';
         } else if (cargo === "Larissa Curbage") {
             leaderInfo =
-                'Líder [Larissa Curbage](larissa.curbage@totvs.com.br)  -  [(16) 9 9198-0510![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516991980510)';
+                'Líder: [Larissa Curbage](larissa.curbage@totvs.com.br)  -  [(16) 9 9198-0510![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516991980510)';
         } else if (cargo === "Paulo Basile") {
             leaderInfo =
-                'Líder [Paulo Basile](paulo.basile@totvs.com.br)  -  [(16) 9 9296-6529![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992966529)';
+                'Líder: [Paulo Basile](paulo.basile@totvs.com.br)  -  [(16) 9 9296-6529![](https://centraldeatendimento.totvs.com/hc/article_attachments/15747636172695)](https://api.whatsapp.com/send?phone=5516992966529)';
         } else if (cargo === "OUTRO") {
             var outroLider = document.getElementById("outroLider").value.trim();
             var outroTelefone = document.getElementById("outroTelefone").value.trim();
@@ -576,7 +586,7 @@ function efeitoDigitar(texto) {
         index++;
 
         if (index < texto.length) {
-            setTimeout(digitar, 10); 
+            setTimeout(digitar, 0); 
         }
     }
 
