@@ -226,7 +226,13 @@ select {
     padding: 6px 10px;
     font-weight: bolder;
   cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 400ms ease;
+  transform: scale(1.02);
+  margin-right: 10px;
 }
+
 
 .btn-limpar:hover {
     background-color: #eb4848;
@@ -240,7 +246,6 @@ select {
 .btn-gerar:hover {
     background-color: rgb(138, 28, 169);
     border-radius: 15px;
-    transform: scale(1.02);
     cursor: pointer;
 }
 
@@ -511,9 +516,16 @@ label[for="campoAdicional"] {
         var mensagemErro = document.getElementById("mensagemErro");
     
         mensagemErro.textContent = ""; // Limpa a mensagem de erro
+
+        // Verifica se o campo adicional está vazio
+    var campoAdicional = document.getElementById("campoAdicional").value.trim();
+    if (campoAdicional === "") {
+        alert("Por favor, preencha o campo adicional antes de gerar a assinatura.");
+        return;
+    }
     
         if (cargo === "") {
-            mensagemErro.textContent = "Não foi selecionada nenhuma informação para gerar assinatura";
+            mensagemErro.textContent = "Preencha todos os campos antes de gerar a assinatura!";
             mensagemErro.style.display = "block";
             setTimeout(function () {
                 mensagemErro.style.display = "none";
