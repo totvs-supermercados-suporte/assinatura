@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,19 +19,59 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,900;1,100&display=swap');
 
 
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffa17f;
+        background: -webkit-linear-gradient(to right, #46337e, #ffa17f);
+        background: linear-gradient(to right, #46337e, #ffa17f);
+        overflow: hidden;
+    }
+    
+    .star0 {
+        height: 1px;
+        width: 1px;
+        opacity: 1;
+        position: absolute;
+    }
+    
+    .star1 {
+        height: 2px;
+        width: 2px;
+        opacity: 0.2;
+        position: absolute;
+        border-radius: 50%;
+    }
+    
+    .star2 {
+        height: 3px;
+        width: 3px;
+        opacity: 0.1;
+        position: absolute;
+        border-radius: 50%;
+    }
+    
+    .star3 {
+        height: 4px;
+        width: 4px;
+        opacity: 0.5;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .star0, .star1, .star2, .star3 {
+        z-index: 0.5; 
+    }
+    
+
+
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0 auto;
     box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #EBE3F5; 
 }
 
 .container {
@@ -45,7 +87,7 @@ body {
     max-height: 600px;
     background: #f2f2f2;
     border-radius: 0px 30px 30px 0px;
-    box-shadow: 20px 20px 20px rgba(130, 130, 133, 0.19)
+    box-shadow: 20px 20px 20px rgba(130, 130, 133, 0.19);
 }
 
 
@@ -59,7 +101,8 @@ img {
   height: 500px;
   border-radius: 30px 0px 0px 30px;
   object-fit: cover;
-  box-shadow: 0px 0px 10px rgba(216, 79, 247, 0.404)
+  box-shadow: 0px 0px 10px rgba(216, 79, 247, 0.14);
+  z-index: 1;
 }
 
 .informe-lider-container {
@@ -382,8 +425,7 @@ label[for="campoAdicional"] {
    
 </head>
 <body>
-  
-  <div class="container"> 
+  <div id="universe" class="container"> 
     <img src="TOTVS2.png" alt="Logo">
     <form class="form-container"> 
 
@@ -471,19 +513,70 @@ label[for="campoAdicional"] {
   <button id="copiar" type="button" onclick="copiarAssinatura()" class="btn-copiar"><i class='bx bxs-copy-alt' style='color:#ffffff'></i> Copiar</button>
   <button id="limpar" type="button" onclick="limparCampos()" class="btn-limpar"><i class='bx bxs-eraser' style='color:#ffffff' ></i> Limpar</button>
 
-  <a href="passo-a-passo.pdf" download style="position: absolute; top: 10px; right: 12px; text-decoration: none; color: #660e87;">Dúvidas? <i class="fas fa-download"></i>
+  <a href="passo-a-passo.pdf" download style="position: absolute; top: 10px; right: 12px; text-decoration: none; color: #e7dfeb;">Dúvidas? <i class="fas fa-download"></i>
   </a>
-  <a href="https://totvssuporte.zendesk.com/agent/tickets/19023482" style="position: absolute; top: 30px; right: 12px; text-decoration: none; color: #660e87;" target="_blank" class="hvr-grow">Teste a assinatura <i class='bx bxs-message-square-edit'></i></a>
+  <a href="https://totvssuporte.zendesk.com/agent/tickets/19023482" style="position: absolute; top: 30px; right: 12px; text-decoration: none; color: #e7dfeb;" target="_blank" class="hvr-grow">Teste a assinatura <i class='bx bxs-message-square-edit'></i></a>
   </form>
 
-
+  <script src="https://cdnjs.cloudfare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"></script>
+    <script src="https://cdnjs.cloudfare.com/ajax/libs/polymer/3.4.1/polymer-element.js"></script>
+    <script src="main.js"></script>
+    <script>
+        var layerCount = 5;
+        var StarCount = 500;
+        var maxTime = 20;
+        var universe = document.getElementById("universe");
+        var w = window;
+        var d = document;
+        var e = d.documentElement;
+        var g = d.getElementsByTagName("body")[0];
+        var width = w.innerWidth || e.clientWidth || g.clientWidth;
+        var height = w.innerHeight || e.clientHeight || g.clientHeight;
+        for (var i = 0; i < StarCount; ++i) {
+            var ypos = Math.random() * height;
+            var star = document.createElement("divd");
+            var speed = 1000 * (Math.random() * maxTime + 1);
+            star.setAttribute("class", "star" + (3 - Math.floor(speed / 1000 / 8 )));
+            star.style.backgroundColor = "white";
+        
+            universe.appendChild(star);
+            star.animate(
+                [
+                    {
+                        transform: "translate3d(" + width + "px, "+ ypos + "px, 0)"
+                    },
+                    {
+                        transform:
+                        "translate3d(-" + Math.random() * 256 + "px, " + ypos + "px, 0)"
+                    }
+                ],
+                {
+                    delay: Math.random() * - speed,
+                    duration: speed,
+                    iterations: 1000
+                }
+            );
+        }  
+        
+        var elem = document.querySelector(".pulse");
+        var animation = elem.animate(
+            {
+                opacity: [0.5, 1],
+                transform: ["scale(0.5)", "scale(1)"]
+        }, 
+        {
+            direction: "alternate",
+            duration: 500,
+            iterations: Infinity
+        }
+        );
+    </script>
   <script>
 
     
     function preencherAreaLinha(checkbox) {
         var areaLinha = document.getElementById("campoAdicional");
     
-        // Desmarcar as outras checkboxes
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(function (cb) {
             if (cb !== checkbox) {
@@ -491,7 +584,7 @@ label[for="campoAdicional"] {
             }
         });
     
-        // Frases conforme necessário para cada checkbox
+
         var frases = {
             'checkbox-edocs': "Documentos Eletrônicos | Varejo Supermercados, Linha Consinco",
             'checkbox-financeiro': "Financeiro, Contábil, Patrimonial e Analytics | Varejo Supermercados, Linha Consinco",
