@@ -467,55 +467,6 @@ label[for="campoAdicional"] {
     <script src="https://cdnjs.cloudfare.com/ajax/libs/polymer/3.4.1/polymer-element.js"></script>
     <script src="main.js"></script>
     <script>
-        var layerCount = 5;
-        var StarCount = 500;
-        var maxTime = 20;
-        var universe = document.getElementById("universe");
-        var w = window;
-        var d = document;
-        var e = d.documentElement;
-        var g = d.getElementsByTagName("body")[0];
-        var width = w.innerWidth || e.clientWidth || g.clientWidth;
-        var height = w.innerHeight || e.clientHeight || g.clientHeight;
-        for (var i = 0; i < StarCount; ++i) {
-            var ypos = Math.random() * height;
-            var star = document.createElement("divd");
-            var speed = 1000 * (Math.random() * maxTime + 1);
-            star.setAttribute("class", "star" + (3 - Math.floor(speed / 1000 / 8 )));
-            star.style.backgroundColor = "white";
-        
-            universe.appendChild(star);
-            star.animate(
-                [
-                    {
-                        transform: "translate3d(" + width + "px, "+ ypos + "px, 0)"
-                    },
-                    {
-                        transform:
-                        "translate3d(-" + Math.random() * 256 + "px, " + ypos + "px, 0)"
-                    }
-                ],
-                {
-                    delay: Math.random() * - speed,
-                    duration: speed,
-                    iterations: 1000
-                }
-            );
-        }  
-        
-        var elem = document.querySelector(".pulse");
-        var animation = elem.animate(
-            {
-                opacity: [0.5, 1],
-                transform: ["scale(0.5)", "scale(1)"]
-        }, 
-        {
-            direction: "alternate",
-            duration: 500,
-            iterations: Infinity
-        }
-        );
-    </script>
   <script>
 
     
